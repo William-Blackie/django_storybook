@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
   name = 'django_storybook', 
-  version = '0.1.2',      
+  version = '0.1.3',      
   license='MIT',        
   description = 'A Django module integrating Storybook pattern library and Django',
   long_description=long_description,

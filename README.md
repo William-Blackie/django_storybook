@@ -17,7 +17,17 @@ Please note django_storybook disables CSRF protection to allow for local develop
     CORS_ORIGIN_ALLOW_ALL = True
     CORS_ALLOW_HEADERS = default_headers + ("Access-Control-Allow-Origin", "csrftoken")
 ```
+### Installed apps
+Add the following to your installed apps:
 
+```
+INSTALLED_APPS =[
+    ...
+    "django_storybook",
+    "corsheaders",
+    ...
+]
+```
 ### URLs
 Add the following to your debug urls:
 
