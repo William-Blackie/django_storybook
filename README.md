@@ -49,23 +49,66 @@ While your development environment is running:
     npm run django-storybook
 ```
 
+## Creating templates
+To create Storybook stories that django-storybook can interpret you need to add the following Javascript file titled "base-template.js"
+
+```
+    import React from 'react'
+
+    const baseUrl = "http://0.0.0.0:8000/compile_django/"
+
+    class BaseTemplate extends React.Component {
+        constructor() {
+        super()
+          this.state = {
+            data: null,
+          };
+        }
+    
+        componentDidMount() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", baseUrl, true);
+            xhr.setRequestHeader('Content-type',    'application/json')
+            xhr.onload = () => {
+                var template = xhr.response;
+                console.log(template);
+                this.setState({ template });
+            }
+
+            xhr.send(JSON.stringify( this.props ));
+        }
+    
+        render() {
+      if (this.state.template) {
+        return  <div dangerouslySetInnerHTML={{__html:this.state.template}} />;
+      }
+      else {
+        return <div>Loading...</div>
+      }
+    }
+  }
+
+  export default BaseTemplate;
+
+```
+
 ## Templating
 To render django templates, template tags and pass in context you simply import the base template and create props that mimic the expected context. The template variable is the relative path to you desired template.
 
 ```
     import React from 'react';
-    import BaseTemplate from '../../../../../django_storybook/static_src/js/base-template.js';
+    import BaseTemplate from '../path/to/your/base-template.js';
 
     // Set storybook title
-    export default { title: 'Card' };
+    export default { title: 'Example' };
 
     // Create props for context
     var props = {
-        template: 'components/atoms/card/card.html',
+        template: 'path/to/your/html.html',
         context: {
             card: {
-                description: "A super cool company I've worked with",
-                url: "https://wwww.google.com",
+                description: "A Description",
+                url: "https://wwww.williamblackie.com",
                 button_title: "Vist website"
                 },
             card_image: {
@@ -76,7 +119,7 @@ To render django templates, template tags and pass in context you simply import 
 
 
     // Export 
-    export const card = () => (
+    export const example = () => (
         <BaseTemplate {...props}/>
 
     )

@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
   name = 'django_storybook', 
-  version = '0.1.3',      
+  version = '0.1.4',      
   license='MIT',        
   description = 'A Django module integrating Storybook pattern library and Django',
   long_description=long_description,
@@ -13,7 +13,7 @@ setuptools.setup(
   author = 'William Blackie',                   
   author_email = 'contact@williamblackie.com',      
   url = 'https://github.com/William-Blackie/django_storybook',  
-  download_url = 'https://github.com/William-Blackie/django_storybook/archive/v_01.tar.gz',  
+  download_url = 'https://github.com/William-Blackie/django_storybook/archive/v_0.1.4.tar.gz',  
   keywords = ['Django', 'Pattern-library', 'Storybook', 'Pattern library'],  
   packages=setuptools.find_packages(),
   classifiers=[
